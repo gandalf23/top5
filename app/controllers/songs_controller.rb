@@ -7,25 +7,30 @@ class SongsController < ApplicationController
     @songs = Song.all
   end
 
+ # GET /songs/new
+  def new
+    @song = Song.new
+    @artists = Artist.all
+  end
+
+  # GET /songs/1/edit
+  def edit
+    @artists = Artist.all
+  end
+
+
   # GET /songs/1
   # GET /songs/1.json
   def show
   end
 
-  # GET /songs/new
-  def new
-    @song = Song.new
-  end
-
-  # GET /songs/1/edit
-  def edit
-  end
+  
 
   # POST /songs
   # POST /songs.json
   def create
     @song = Song.new(song_params)
-
+    @artists = Artist.all
     respond_to do |format|
       if @song.save
         format.html { redirect_to @song, notice: 'Song was successfully created.' }
